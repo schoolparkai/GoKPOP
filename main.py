@@ -145,9 +145,9 @@ st.pyplot(fig)
 
 # 창작성 판단지수 공식/ 전체 너비를 사용하여 출력
 st.image(image, use_container_width=True)
+st.markdown("<p style='font-size: 22px;'>※ 본 결과는 수치 기반의 창작성 해석 예시입니다.</p>", unsafe_allow_html=True)
 
 # 유튜브 영상 표시
 st.markdown("---")
 st.markdown("<h3 style='font-size: 30px;'>🎧 지금 바로 감상해보세요!</h3>", unsafe_allow_html=True)
 st.video("https://www.youtube.com/watch?v=XGf2PO4rHzU")
-st.markdown("<p style='font-size: 22px;'>※ 본 결과는 수치 기반의 창작성 해석 예시입니다.</p>", unsafe_allow_html=True)
