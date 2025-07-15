@@ -6,7 +6,7 @@ from PIL import Image
 
 # 이미지 경로
 image_path = "assets/formula.png"
-image_path2 = "assets/result.png"
+image_path2 = "assets/result1.png"
 
 # 이미지 열기
 image = Image.open(image_path)
