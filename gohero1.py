@@ -6,9 +6,11 @@ from PIL import Image
 
 # 이미지 경로
 image_path = "assets/formula.png"
+image_path2 = "assets/result.png"
 
 # 이미지 열기
 image = Image.open(image_path)
+image2 = Image.open(image_path2)
 
 
 # 초기 관리자 데이터 (예시 데이터)
@@ -153,9 +155,9 @@ import matplotlib.font_manager as fm
 st.markdown("<h3 style='font-size: 30px;'>📈 창작성 판단지수 변화 추이 ⏳</h3>", unsafe_allow_html=True)
 fig, ax = plt.subplots(figsize=(10, 4))
 ax.plot(df_updated["날짜"], df_updated["창작성 판단지수"], marker='o')
-ax.set_title("Creativity Score Trend by Date", fontsize=18)
-ax.set_xlabel("Date", fontsize=16)
-ax.set_ylabel("Score", fontsize=16)
+#ax.set_title("Creativity Score Trend by Date", fontsize=18)
+#ax.set_xlabel("Date", fontsize=16)
+#ax.set_ylabel("Score", fontsize=16)
 ax.set_ylim(0, 100)
 plt.xticks(rotation=45, fontsize=14)
 plt.yticks(fontsize=14)
@@ -164,6 +166,8 @@ st.pyplot(fig)
 # 창작성 판단지수 공식/ 전체 너비를 사용하여 출력
 st.image(image, use_container_width=True)
 st.markdown("<p style='font-size: 22px;'>※ 본 결과는 수치 기반의 창작성 해석 예시입니다.</p>", unsafe_allow_html=True)
+st.markdown("---")
+st.image(image2, use_container_width=True)
 
 # 유튜브 영상 표시
 st.markdown("---")
