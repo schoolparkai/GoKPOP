@@ -27,7 +27,7 @@ def load_data():
     return df
 
 # Streamlit 앱 시작
-st.set_page_config(page_title="임영웅 창작성 판단기", layout="centered")
+st.set_page_config(page_title="임영웅 창작성 판단 지수 측정", layout="centered")
 col_logo, col_text = st.columns([1, 6])
 with col_logo:
     st.image("assets/yonsei_logo.png", width=65)
@@ -37,8 +37,8 @@ with col_text:
 st.markdown("""
     <hr style='border: none; border-top: 3px dashed #f39c12; margin-bottom: 14px;'>
 <div class='fireworks-bg' style='text-align: center; background: radial-gradient(circle at top left, #ffe5ec, #ffc9de, #f9a8d4); padding: 30px 20px; border-radius: 22px; animation: pulse 4s infinite, glow 3s ease-in-out infinite; box-shadow: 0 0 30px #f8bbd0;'>
-    <h1 style='font-size: 42px; margin-bottom: 10px; color: #4a148c; text-shadow: 1px 1px 2px white;'>임영웅</h1>
-    <h1 style='font-size: 38px; margin-top: 0; color: #880e4f; text-shadow: 1px 1px 2px white;'>&lt;사랑해요 그대를&gt; 창작성 판단기</h1>
+    <h1 style='font-size: 42px; margin-bottom: 10px; color: #4a148c; text-shadow: 1px 1px 2px white;'>임영웅 &lt;사랑해요 그대를&gt;</h1>
+    <h1 style='font-size: 38px; margin-top: 0; color: #880e4f; text-shadow: 1px 1px 2px white;'> 창작성 판단 지수 측정</h1>
 </div>
 <hr style='border: none; border-top: 3px dashed #f39c12; margin-top: 14px;'>
 <style>
@@ -92,7 +92,7 @@ with col2:
 
     st.markdown(f"""
         <div style='border: 2px solid #999; border-radius: 16px; padding: 20px; margin-top: 30px; background: linear-gradient(145deg, #f4f4f4, #e8e8e8); text-align: center; width: 100%; transition: transform 0.3s ease-in-out;'>
-            <p style='font-size: 20px; margin-bottom: 4px;'>💡 창안구의 비율</p>
+            <p style='font-size: 30px; margin-bottom: 4px;color: #000000;'>💡창안구의 비율💡</p>
             <p style='font-size: 36px; font-weight: bold; color: #004488;'>{creativity_ratio}%</p>
         </div>
     """, unsafe_allow_html=True)

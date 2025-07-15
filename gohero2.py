@@ -6,9 +6,11 @@ from PIL import Image
 
 # 이미지 경로
 image_path = "assets/formula.png"
+image_path2 = "assets/result1.png"
 
 # 이미지 열기
 image = Image.open(image_path)
+image2 = Image.open(image_path2)
 
 
 # 초기 관리자 데이터 (예시 데이터)
@@ -18,7 +20,7 @@ def load_data():
             "2025-07-10", "2025-07-11", "2025-07-12",
             "2025-07-13", "2025-07-14"
         ],
-        "창작성 판단지수": [42.5, 45.3, 48.7, 50.2, 52.6]
+        "창작성 판단지수": [22.5, 25.3, 32.7, 33.2, 37.6]
     }
     df = pd.DataFrame(data)
     df["날짜"] = pd.to_datetime(df["날짜"])
@@ -107,15 +109,33 @@ total_score = round((creativity_ratio * 0.4) + (impact_score * 0.4) + (loyalty_s
 
 # 등급 및 설명
 if total_score >= 80:
-    level = "🔵 매우 높음 - 창작 표현이 풍부하고 대중의 반응도 매우 뜨겁습니다."
+    level = (
+        "🔵 매우 높음 - 창안구와 답습구가 유기적으로 결합되어 "
+        "새로운 문학적 의미를 풍부하게 형성했으며, "
+        "대중에게 높은 수준으로 이해되고 수용되었습니다."
+    )
 elif total_score >= 60:
-    level = "🟢 높음 - 신선한 표현이 많고 수용자에게도 잘 받아들여졌습니다."
+    level = (
+        "🟢 높음 - 창안구와 답습구의 조화가 뚜렷하여 "
+        "새로운 의미를 효과적으로 전달했고, "
+        "대중의 호응을 충분히 얻었습니다."
+    )
 elif total_score >= 40:
-    level = "🟡 준수 - 익숙한 표현 속에서도 창의성이 어느 정도 돋보입니다."
+    level = (
+        "🟡 준수 - 전통적 표현과 창안구가 자연스럽게 어우러져 "
+        "새로운 의미를 시도했으며, 대중의 수용도 무난했습니다."
+    )
 elif total_score >= 20:
-    level = "🟠 보통 - 대체로 관습적인 표현이 많지만 일부 창의적 시도가 있습니다."
+    level = (
+        "🟠 보통 - 관습적 표현이 대부분이나 일부 창안구가 "
+        "새로운 의미를 제시했고, 대중의 이해를 어느 정도 이끌어냈습니다."
+    )
 else:
-    level = "🔴 낮음 - 대부분 익숙한 표현으로 구성되어 있습니다."
+    level = (
+        "🔴 낮음 - 창안구의 비중이 적어 전통적 반복 위주이지만, "
+        "일부 새로운 의미 시도가 확인됩니다."
+    )
+
 
 # 결과 출력
 st.markdown("---")
@@ -130,29 +150,14 @@ df_updated = pd.concat([df, new_row], ignore_index=True)
 
 import matplotlib.font_manager as fm
 
-fallback_fonts = ['NanumGothic', 'Malgun Gothic', 'AppleGothic', 'Arial Unicode MS']
-selected_font = None
-
-for font in fallback_fonts:
-    try:
-        font_path = fm.findfont(fm.FontProperties(family=font), fallback_to_default=False)
-        selected_font = fm.FontProperties(fname=font_path).get_name()
-        break
-    except:
-        continue
-
-if selected_font:
-    plt.rcParams['font.family'] = selected_font
-else:
-    st.warning("⚠️ 시스템에서 한글 폰트를 찾을 수 없습니다. 일부 그래프 텍스트가 깨질 수 있습니다.")
 
 # 그래프 출력
 st.markdown("<h3 style='font-size: 30px;'>📈 창작성 판단지수 변화 추이 ⏳</h3>", unsafe_allow_html=True)
 fig, ax = plt.subplots(figsize=(10, 4))
 ax.plot(df_updated["날짜"], df_updated["창작성 판단지수"], marker='o')
-ax.set_title("날짜별 창작성 판단지수 추이", fontsize=18)
-ax.set_xlabel("날짜", fontsize=16)
-ax.set_ylabel("점수", fontsize=16)
+#ax.set_title("Creativity Score Trend by Date", fontsize=18)
+#ax.set_xlabel("Date", fontsize=16)
+#ax.set_ylabel("Score", fontsize=16)
 ax.set_ylim(0, 100)
 plt.xticks(rotation=45, fontsize=14)
 plt.yticks(fontsize=14)
@@ -160,9 +165,11 @@ st.pyplot(fig)
 
 # 창작성 판단지수 공식/ 전체 너비를 사용하여 출력
 st.image(image, use_container_width=True)
+st.markdown("<p style='font-size: 22px;'>※ 본 결과는 수치 기반의 창작성 해석 예시입니다.</p>", unsafe_allow_html=True)
+st.markdown("---")
+st.image(image2, use_container_width=True)
 
 # 유튜브 영상 표시
 st.markdown("---")
 st.markdown("<h3 style='font-size: 30px;'>🎧 지금 바로 감상해보세요!</h3>", unsafe_allow_html=True)
 st.video("https://www.youtube.com/watch?v=XGf2PO4rHzU")
-st.markdown("<p style='font-size: 22px;'>※ 본 결과는 수치 기반의 창작성 해석 예시입니다.</p>", unsafe_allow_html=True)
