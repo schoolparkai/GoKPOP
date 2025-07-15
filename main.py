@@ -130,21 +130,6 @@ df_updated = pd.concat([df, new_row], ignore_index=True)
 
 import matplotlib.font_manager as fm
 
-fallback_fonts = ['NanumGothic', 'Malgun Gothic', 'AppleGothic', 'Arial Unicode MS']
-selected_font = None
-
-for font in fallback_fonts:
-    try:
-        font_path = fm.findfont(fm.FontProperties(family=font), fallback_to_default=False)
-        selected_font = fm.FontProperties(fname=font_path).get_name()
-        break
-    except:
-        continue
-
-if selected_font:
-    plt.rcParams['font.family'] = selected_font
-else:
-    st.warning("⚠️ 시스템에서 한글 폰트를 찾을 수 없습니다. 일부 그래프 텍스트가 깨질 수 있습니다.")
 
 # 그래프 출력
 st.markdown("<h3 style='font-size: 30px;'>📈 창작성 판단지수 변화 추이 ⏳</h3>", unsafe_allow_html=True)
