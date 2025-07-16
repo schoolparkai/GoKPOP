@@ -88,7 +88,7 @@ with col1:
 with col2:
     st.markdown("<p style='font-size:24px;'>❤️ 좋아요 수</p>", unsafe_allow_html=True)
     likes = st.number_input("Likes", min_value=0, value=300, format="%d", key="likes")
-    creativity_ratio = 26.6  # 고정된 창안구 비율
+    creativity_ratio = 20  # 고정된 창안구 비율
 
     st.markdown(f"""
         <div style='border: 2px solid #999; border-radius: 16px; padding: 20px; margin-top: 30px; background: linear-gradient(145deg, #f4f4f4, #e8e8e8); text-align: center; width: 100%; transition: transform 0.3s ease-in-out;'>
