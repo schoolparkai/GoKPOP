@@ -1,0 +1,26 @@
+# Local and private files never belong in a website release
+.env
+.env.*
+.streamlit/secrets.toml
+*API_KEY*
+*credentials*
+*.pem
+*.key
+*.sqlite*
+*.db
+incoming/
+reference/
+data/private/
+data/canonical/
+data/review_pending/
+logs/
+backups/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.venv/
+venv/
+.runtime-temp/
+*.log
+*.tmp
+*.bak

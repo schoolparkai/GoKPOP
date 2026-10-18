@@ -1,0 +1,78 @@
+{
+  "baseline_date": "2026-10-18",
+  "scores_exact": {
+    "B1": "20",
+    "E1": "643/100",
+    "E2": "1263001234570/207375278457",
+    "E3": "1463413220666052048760480358441957/87027681301640178518418385523171",
+    "I1": "8930840/2600709",
+    "I2": "50/3"
+  },
+  "J_exact": "108635854215402719324112991267489459324348957507410163/1564533622402778194397265309011729426330992561574100",
+  "observations": {
+    "E2": {
+      "title": "Loving You (사랑해요 그대를)",
+      "channel": "Lim Young Woong - Topic",
+      "url": "https://www.youtube.com/watch?v=m-DliVHOXjA",
+      "views": 14926224,
+      "likes": 83113,
+      "observed_at_kst": "2026-10-18T03:09:34.867357+09:00"
+    },
+    "I1": {
+      "title": "[뭔솔인강] 임영웅 노래 가사, 진짜 창의적인 거 맞나요?｜박경우 교수 Ep.2",
+      "channel": "연세 인문학 아케이드",
+      "url": "https://www.youtube.com/watch?v=qRAMHmWnrLc",
+      "views": 55396,
+      "likes": 1652,
+      "observed_at_kst": "2026-10-18T03:09:35.059664+09:00"
+    }
+  },
+  "charts": [
+    {
+      "label": "2022년 24주 디지털",
+      "rank": 113,
+      "url": "https://circlechart.kr/page_chart/onoff.circle?hitYear=2022&nationGbn=T&serviceGbn=ALL&targetTime=24&termGbn=week&yearTime=3"
+    },
+    {
+      "label": "2022년 37주 디지털",
+      "rank": 140,
+      "url": "https://circlechart.kr/page_chart/onoff.circle?hitYear=2022&nationGbn=T&serviceGbn=ALL&targetTime=37&termGbn=week&yearTime=3"
+    },
+    {
+      "label": "2022년 46주 디지털",
+      "rank": 146,
+      "url": "https://circlechart.kr/page_chart/onoff.circle?hitYear=2022&nationGbn=T&serviceGbn=ALL&targetTime=46&termGbn=week&yearTime=3"
+    },
+    {
+      "label": "2023년 연간 다운로드",
+      "rank": 46,
+      "url": "https://circlechart.kr/page_chart/onoff.circle?hitYear=2023&nationGbn=T&serviceGbn=S1020&targetTime=2024&termGbn=year&yearTime=3"
+    }
+  ],
+  "counts": {
+    "E3_comments": 522,
+    "E3_units": 498,
+    "I2_cases": 4
+  },
+  "records": [
+    {
+      "date": "2026-10-18",
+      "kind": "baseline",
+      "J_exact": "108635854215402719324112991267489459324348957507410163/1564533622402778194397265309011729426330992561574100",
+      "E2_exact": "1263001234570/207375278457",
+      "I1_exact": "8930840/2600709",
+      "formula_version": "gokpop2-engine-v1"
+    }
+  ],
+  "schema": "gokpop-release-data-v1",
+  "audience_note": {
+    "title": "사랑을 말하는 목소리, 함께 느끼는 온기",
+    "summary": "사랑을 표현하는 부드러운 모습과 노랫말에서 느끼는 따뜻함·행복을 함께 생각해 봅니다.",
+    "paragraphs": [
+      "노래를 듣는 사람들은 저마다 다른 모습의 사랑을 떠올립니다. 어떤 시청자는 과거 트로트의 강한 남성 이미지와 오늘날의 부드러운 모습을 비교하며 이 노래에 대한 생각을 나누었습니다.",
+      "또 다른 댓글에서는 노랫말을 통해 느끼는 따뜻함과 행복을 발견할 수 있었습니다. 익숙한 사랑의 노래라도 듣는 사람의 경험에 따라 서로 다른 감동을 전할 수 있다는 점이 흥미롭습니다.",
+      "강의를 듣고 노랫말에 대한 생각을 나누어 주신 모든 분께 감사드립니다. 여러분의 감상은 이 작품을 다양한 관점에서 다시 읽어보는 소중한 계기가 되었습니다.",
+      "여러분은 이 노래에서 어떤 사랑의 모습과 감정을 발견하셨나요?"
+    ]
+  }
+}
