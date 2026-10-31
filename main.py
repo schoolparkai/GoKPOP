@@ -3,6 +3,7 @@ from pathlib import Path
 import sys
 ROOT = Path(__file__).resolve().parent
 sys.path.insert(0, str(ROOT / 'src'))
+print('GOKPOP_RELEASE=history-20261031-r1', flush=True)
 import streamlit as st
 from gokpop_public.ui import render
 st.set_page_config(page_title='GOKPOP 2.0 · 함께 읽는 노래', page_icon='📖', layout='centered', initial_sidebar_state='collapsed')
