@@ -6,6 +6,7 @@ from gokpop.presentation import format_score
 from gokpop.scoring import MAX_SCORES
 from .content import history_chart, load_content, simulate
 from .content import load_note
+from .history import load_history, render_history
 from .media import support_banner, performance_video
 
 LECTURE = 'https://www.youtube.com/watch?v=qRAMHmWnrLc'
@@ -82,11 +83,14 @@ def fmt(value, cap=100):
     return format_score(Fraction(value), cap, 2)
 
 
-def calculator(content):
-    base = content['observations']['I1']
+def calculator(content, root):
+    try:
+        default_counts = load_history(root, content)[-1]
+    except (OSError, ValueError, TypeError, KeyError):
+        default_counts = content['observations']['I1']
     st.header('조회수와 좋아요를 바꿔 보세요', anchor=False)
-    st.session_state.setdefault('trial_views', str(base['views']))
-    st.session_state.setdefault('trial_likes', str(base['likes']))
+    st.session_state.setdefault('trial_views', str(default_counts['views']))
+    st.session_state.setdefault('trial_likes', str(default_counts['likes']))
     st.session_state.setdefault('audience_views', st.session_state['trial_views'])
     st.session_state.setdefault('audience_likes', st.session_state['trial_likes'])
     with st.form('audience_calculation', border=False, enter_to_submit=True):
@@ -113,16 +117,16 @@ def calculator(content):
     st.caption('입력값은 저장하지 않으며 공식 관측 기록에 반영하지 않습니다.')
 
 
-def score_view(content):
+def score_view(content, root):
     st.markdown('''<div class="stat-grid"><div class="stat"><div class="stat-label">창안구</div><div class="stat-value">3/15</div></div><div class="stat"><div class="stat-label">가사 수용 댓글</div><div class="stat-value">522<small>건</small></div></div><div class="stat"><div class="stat-label">감상 의미 사례</div><div class="stat-value">4<small>개</small></div></div></div>''', unsafe_allow_html=True)
     st.caption('가사 판정 · 공연 댓글 수용 · 강의 감상 사례를 각각 집계했습니다.')
     records = content['records']
     if records:
         first = records[0]
-        detail = '두 번째 기록부터 변화 그래프를 보여드립니다.' if len(records) == 1 else '아래 그래프는 실제 승인 관측만 연결합니다.'
-        st.markdown(f'<div class="record"><strong>첫 기록 · {escape(first["date"].replace("-","."))} · {fmt(first["J_exact"])}점</strong><br><span>실제 승인 관측 {len(records)}회 · {detail}</span></div>', unsafe_allow_html=True)
+        st.markdown(f'<div class="record"><strong>첫 기록 · {escape(first["date"].replace("-","."))} · {fmt(first["J_exact"])}점</strong><br><span>첫 기준 관측을 보존하고, 이후 강의 영상 반응의 변화를 살펴봅니다.</span></div>', unsafe_allow_html=True)
     if len(records)>=2:
         st.vega_lite_chart(history_chart(records), width='stretch')
+    render_history(root, content)
     with st.expander('여섯 가지 평가 기준 자세히 보기'):
         cards=[]
         for metric,label in LABELS.items():
@@ -196,11 +200,11 @@ def render(root):
             st.markdown(paragraph)
     selected=st.segmented_control('보고 싶은 내용',MENUS,default='점수 보기',required=True,key='audience_menu',label_visibility='collapsed',width='stretch')
     if selected=='직접 계산':
-        calculator(content)
+        calculator(content, root)
     elif selected=='감상 노트':
         audience_notes(root)
     else:
-        score_view(content)
+        score_view(content, root)
     research_info(content)
     st.markdown('<div class="footer">GOKPOP 2.0 · 가사와 대중의 만남</div>',unsafe_allow_html=True)
     performance_video()
